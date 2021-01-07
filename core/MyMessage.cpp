@@ -38,6 +38,7 @@ MyMessage::MyMessage(const uint8_t _sensorId, const mysensors_data_t _dataType)
 
 void MyMessage::clear(void)
 {
+	this->RSSI                 = 0u;
 	this->last                 = 0u;
 	this->sender               = 0u;
 	this->destination          = GATEWAY_ADDRESS; // Gateway is default destination
@@ -81,6 +82,16 @@ MyMessage& MyMessage::setType(const uint8_t messageType)
 {
 	this->type = messageType;
 	return *this;
+}
+
+char* MyMessage::getRSSI(char *buffer) const
+{
+	if (buffer != NULL) {
+		(void)itoa(RSSI, buffer, 10);
+		return buffer;
+	}else{
+		return NULL;
+	}
 }
 
 uint8_t MyMessage::getLast(void) const

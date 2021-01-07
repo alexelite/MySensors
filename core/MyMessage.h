@@ -504,6 +504,12 @@ public:
 	MyMessage& setType(const uint8_t messageType);
 
 	/**
+	* @brief Get RSSI
+	* @return RSSI
+	*/
+	char* getRSSI(char *buffer) const;
+
+	/**
 	* @brief Get last ID
 	* @return lastId
 	*/
@@ -620,6 +626,7 @@ typedef union {
 	struct {
 
 #endif
+	uint8_t RSSI;
 	uint8_t last;							//!< 8 bit - Id of last node this message passed
 	uint8_t sender;						//!< 8 bit - Id of sender node (origin)
 	uint8_t destination;			//!< 8 bit - Id of destination node

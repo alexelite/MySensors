@@ -124,6 +124,12 @@ bool gatewayTransportSend(MyMessage &message)
 		return false;
 	}
 	setIndication(INDICATION_GW_TX);
+	char *RSSI = message.getRSSI(_convBuffer);
+	if (RSSI){
+		char *topic = protocolRSSI2MQTT(MY_MQTT_PUBLISH_TOPIC_PREFIX, message);
+		GATEWAY_DEBUG(PSTR("GWT:TPS:TOPIC=%s,MSG SENT\n"), topic);
+		(void)_MQTT_client.publish(topic, RSSI, false);
+	};
 	char *topic = protocolMyMessage2MQTT(MY_MQTT_PUBLISH_TOPIC_PREFIX, message);
 	GATEWAY_DEBUG(PSTR("GWT:TPS:TOPIC=%s,MSG SENT\n"), topic);
 #if defined(MY_MQTT_CLIENT_PUBLISH_RETAIN)

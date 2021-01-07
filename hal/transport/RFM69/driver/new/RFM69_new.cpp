@@ -352,6 +352,7 @@ LOCAL uint8_t RFM69_receive(uint8_t *buf, const uint8_t maxBufSize)
 	const rfm69_RSSI_t RSSI = RFM69.currentPacket.RSSI;
 
 	if (buf != NULL) {
+		(void)memcpy((void *)buf-1, (void *)&RFM69.currentPacket.RSSI, 1);
 		(void)memcpy((void *)buf, (void *)&RFM69.currentPacket.payload, payloadLen);
 	}
 	// clear data flag

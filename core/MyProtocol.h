@@ -32,6 +32,8 @@ char *protocolMyMessage2Serial(const MyMessage &message);
 
 char *protocolMyMessage2MQTT(const char *prefix, const MyMessage &message);
 
+char *protocolRSSI2MQTT(const char *prefix, const MyMessage &message);
+
 bool protocolMQTT2MyMessage(MyMessage &message, char *topic, uint8_t *payload,
                             const unsigned int length);
 
