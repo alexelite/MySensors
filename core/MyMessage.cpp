@@ -87,7 +87,7 @@ MyMessage& MyMessage::setType(const uint8_t messageType)
 char* MyMessage::getRSSI(char *buffer) const
 {
 	if (buffer != NULL) {
-		(void)itoa(RSSI, buffer, 10);
+		(void)itoa(-RSSI/2, buffer, 10);
 		return buffer;
 	}else{
 		return NULL;

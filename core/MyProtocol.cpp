@@ -110,8 +110,8 @@ char *protocolRSSI2MQTT(const char *prefix, const MyMessage &message)
 {
 	(void)snprintf_P(_fmtBuffer, (uint8_t)MY_GATEWAY_MAX_SEND_LENGTH,
 	                 PSTR("%s/%" PRIu8 "/%" PRIu8 "/%" PRIu8 "/%" PRIu8 "/%" PRIu8 ""), prefix,
-	                 message.getSender(), NODE_SENSOR_ID, C_INTERNAL, false,
-	                 I_SIGNAL_REPORT_RESPONSE);
+	                 message.getSender(), 254, C_SET, false,
+	                 V_LEVEL);
 	return _fmtBuffer;
 }
 
